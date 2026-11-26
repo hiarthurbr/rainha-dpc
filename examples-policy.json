@@ -1,0 +1,16 @@
+{
+  "allowedPackages": [
+    "com.android.chrome",
+    "com.example.inventory"
+  ],
+  "chromeHomepage": "https://portal.example.com",
+  "chromeBlocklist": ["*"],
+  "chromeAllowlist": [
+    "https://portal.example.com",
+    "https://help.example.com"
+  ],
+  "disableChromeIncognito": true,
+  "kioskMode": true,
+  "disableStatusBar": true,
+  "restrictSystemSettings": true
+}

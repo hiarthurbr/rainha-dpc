@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Lockdown DPC</string>
+    <string name="admin_label">Lockdown DPC</string>
+    <string name="admin_description">Applies organization-managed app and device restrictions.</string>
+</resources>
