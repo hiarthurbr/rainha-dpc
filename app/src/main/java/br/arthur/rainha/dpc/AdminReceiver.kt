@@ -1,4 +1,4 @@
-package com.example.lockdowndpc
+package br.arthur.rainha.dpc
 
 import android.app.admin.DeviceAdminReceiver
 import android.content.Context

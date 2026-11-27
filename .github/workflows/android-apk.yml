@@ -46,8 +46,8 @@ jobs:
         run: |
           if [[ ( -f settings.gradle.kts || -f settings.gradle ) && -d app ]]; then
             project_dir="."
-          elif [[ ( -f lockdown-dpc/settings.gradle.kts || -f lockdown-dpc/settings.gradle ) && -d lockdown-dpc/app ]]; then
-            project_dir="lockdown-dpc"
+          elif [[ ( -f rainha-dpc/settings.gradle.kts || -f rainha-dpc/settings.gradle ) && -d rainha-dpc/app ]]; then
+            project_dir="rainha-dpc"
           else
             echo "Could not find the Android project (expected settings.gradle[.kts] and app/)."
             exit 1
@@ -63,14 +63,14 @@ jobs:
         working-directory: ${{ steps.project.outputs.project_dir }}
         run: |
           mkdir -p dist
-          cp app/build/outputs/apk/debug/app-debug.apk dist/Lockdown-DPC-debug.apk
-          ls -lh dist/Lockdown-DPC-debug.apk
+          cp app/build/outputs/apk/debug/app-debug.apk dist/rainha-DPC-debug.apk
+          ls -lh dist/rainha-DPC-debug.apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v7
         with:
-          name: lockdown-dpc-debug-apk
-          path: ${{ steps.project.outputs.project_dir }}/dist/Lockdown-DPC-debug.apk
+          name: rainha-dpc-debug-apk
+          path: ${{ steps.project.outputs.project_dir }}/dist/rainha-DPC-debug.apk
           if-no-files-found: error
           retention-days: 30
 
@@ -80,7 +80,7 @@ jobs:
           {
             echo "## APK build complete"
             echo
-            echo "Download **Lockdown-DPC-debug.apk** from the **Artifacts** section at the bottom of this workflow run."
+            echo "Download **rainha-DPC-debug.apk** from the **Artifacts** section at the bottom of this workflow run."
             echo
             echo "This is a debug APK intended for testing. Use a permanently signed release APK for deployment."
           } >> "$GITHUB_STEP_SUMMARY"

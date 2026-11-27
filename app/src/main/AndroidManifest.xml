@@ -13,7 +13,7 @@
 
     <application
         android:allowBackup="false"
-        android:label="Lockdown DPC"
+        android:label="Rainha DPC"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 

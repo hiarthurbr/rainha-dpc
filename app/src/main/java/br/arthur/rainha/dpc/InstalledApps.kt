@@ -1,4 +1,4 @@
-package com.example.lockdowndpc
+package br.arthur.rainha.dpc
 
 import android.content.Context
 import android.content.Intent

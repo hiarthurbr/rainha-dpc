@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.lockdowndpc"
+    namespace = "br.arthur.rainha.dpc"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.lockdowndpc"
+        applicationId = "br.arthur.rainha.dpc"
         minSdk = 24
         targetSdk = 35
         versionCode = 1

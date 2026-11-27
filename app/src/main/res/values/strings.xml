@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lockdown DPC</string>
-    <string name="admin_label">Lockdown DPC</string>
-    <string name="admin_description">Applies organization-managed app and device restrictions.</string>
+    <string name="app_name">Rainha DPC</string>
+    <string name="admin_label">Rainha DPC</string>
+    <string name="admin_description">Aplica restições de dispositivo gerenciadas pela empresa.</string>
 </resources>

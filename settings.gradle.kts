@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "LockdownDpc"
+rootProject.name = "Rainha DPC"
 include(":app")

@@ -1,4 +1,4 @@
-package com.example.lockdowndpc
+package br.arthur.rainha.dpc
 
 import android.content.Context
 import java.security.MessageDigest
@@ -20,7 +20,7 @@ object PinStore {
     }
 
     fun setPin(context: Context, pin: String) {
-        require(pin.length >= 6 && pin.all { it.isDigit() }) { "Admin PIN must be at least 6 digits." }
+        require(pin.length >= 6) { "Admin PIN must be at least 6 digits." }
         val salt = ByteArray(16).also { SecureRandom().nextBytes(it) }
         val digest = derive(pin, salt)
         context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit()

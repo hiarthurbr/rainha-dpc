@@ -1,4 +1,4 @@
-package com.example.lockdowndpc
+package br.arthur.rainha.dpc
 
 import android.app.Activity
 import android.app.ActivityManager
@@ -45,7 +45,8 @@ class KioskActivity : Activity() {
 
         if (!PolicyEngine.isDeviceOwner(this)) {
             root.addView(TextView(this).apply {
-                text = "Not yet enrolled as a fully managed device. Factory-reset the device and provision it with the generated QR code, or use the ADB test command in README.md."
+                text =
+                    "Not yet enrolled as a fully managed device. Factory-reset the device and provision it with the generated QR code, or use the ADB test command in README.md."
                 textSize = 15f
             })
         }
@@ -69,13 +70,15 @@ class KioskActivity : Activity() {
                 setOnClickListener {
                     val launch = packageManager.getLaunchIntentForPackage(packageName)
                     if (launch == null) {
-                        Toast.makeText(this@KioskActivity, "No launch activity for $packageName", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@KioskActivity, "No launch activity for $packageName", Toast.LENGTH_SHORT)
+                            .show()
                     } else {
                         launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         try {
                             startActivity(launch)
                         } catch (e: Exception) {
-                            Toast.makeText(this@KioskActivity, "Could not open app: ${e.message}", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this@KioskActivity, "Could not open app: ${e.message}", Toast.LENGTH_LONG)
+                                .show()
                         }
                     }
                 }

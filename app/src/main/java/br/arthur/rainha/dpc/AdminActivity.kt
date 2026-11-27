@@ -1,4 +1,4 @@
-package com.example.lockdowndpc
+package br.arthur.rainha.dpc
 
 import android.app.Activity
 import android.os.Bundle
@@ -42,13 +42,28 @@ class AdminActivity : Activity() {
         setContentView(scroll)
 
         content.addView(text("Device policy", 25f, true))
-        content.addView(text("Choose which apps appear in the managed home screen. The kiosk policy permits only this DPC and the selected packages to enter lock-task mode.", 14f))
+        content.addView(
+            text(
+                "Choose which apps appear in the managed home screen. The kiosk policy permits only this DPC and the selected packages to enter lock-task mode.",
+                14f
+            )
+        )
         content.addView(section("Approved apps"))
-        content.addView(text("Select installed apps to make them available. Apps installed later must be selected here before users can launch them from the managed home screen.", 13f))
+        content.addView(
+            text(
+                "Select installed apps to make them available. Apps installed later must be selected here before users can launch them from the managed home screen.",
+                13f
+            )
+        )
 
         val installed = InstalledApps.launchableApps(this)
         if (installed.isEmpty()) {
-            content.addView(text("No launcher apps were found. Install the required apps first, then reopen this screen.", 13f))
+            content.addView(
+                text(
+                    "No launcher apps were found. Install the required apps first, then reopen this screen.",
+                    13f
+                )
+            )
         }
         installed.forEach { info ->
             val packageName = info.activityInfo.packageName
@@ -79,7 +94,12 @@ class AdminActivity : Activity() {
             isChecked = config.disableChromeIncognito
         }
         content.addView(incognito)
-        content.addView(text("Chrome policy names are passed as Android managed-configuration keys. Support depends on the installed Chrome version and policy; see the README for examples.", 12f))
+        content.addView(
+            text(
+                "Chrome policy names are passed as Android managed-configuration keys. Support depends on the installed Chrome version and policy; see the README for examples.",
+                12f
+            )
+        )
 
         content.addView(section("Device lockdown"))
         kiosk = CheckBox(this).apply {
@@ -97,10 +117,20 @@ class AdminActivity : Activity() {
         content.addView(kiosk)
         content.addView(statusBar)
         content.addView(restrictSettings)
-        content.addView(text("The settings restriction preset blocks factory reset, safe boot, adding/removing users, USB file transfer, debugging, sideloading, app uninstall and app controls, Bluetooth/location configuration, account changes, credentials and VPN configuration; date/time is restricted on Android 9+. Wi-Fi configuration is not restricted by this preset, and Play Store app installs remain possible for staging. To use either during staging, the admin must temporarily allow the relevant system app (for example Settings or Play Store) in the app list. Only allowlisted packages can be launched in kiosk mode.", 12f))
+        content.addView(
+            text(
+                "The settings restriction preset blocks factory reset, safe boot, adding/removing users, USB file transfer, debugging, sideloading, app uninstall and app controls, Bluetooth/location configuration, account changes, credentials and VPN configuration; date/time is restricted on Android 9+. Wi-Fi configuration is not restricted by this preset, and Play Store app installs remain possible for staging. To use either during staging, the admin must temporarily allow the relevant system app (for example Settings or Play Store) in the app list. Only allowlisted packages can be launched in kiosk mode.",
+                12f
+            )
+        )
 
         content.addView(section("Admin access PIN"))
-        content.addView(text("Set a PIN of at least 6 digits. The managed home screen asks for it before opening this admin screen. Keep it somewhere safe; this starter has no remote PIN recovery.", 13f))
+        content.addView(
+            text(
+                "Set a PIN of at least 6 digits. The managed home screen asks for it before opening this admin screen. Keep it somewhere safe; this starter has no remote PIN recovery.",
+                13f
+            )
+        )
         pin = editText("New admin PIN (6+ digits)", "", false).apply {
             inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_VARIATION_PASSWORD
         }
@@ -132,7 +162,7 @@ class AdminActivity : Activity() {
             return
         }
         if (newPin.isNotBlank()) {
-            if (newPin.length < 6 || !newPin.all { it.isDigit() }) {
+            if (newPin.length < 6) {
                 toast("PIN must contain at least 6 digits.")
                 return
             }
@@ -186,13 +216,15 @@ class AdminActivity : Activity() {
             minLines = 2
             maxLines = 6
             gravity = android.view.Gravity.TOP
-            inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE or InputType.TYPE_TEXT_FLAG_CAP_SENTENCES
+            inputType =
+                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE or InputType.TYPE_TEXT_FLAG_CAP_SENTENCES
         } else {
             inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_URI
         }
-        layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT).apply {
-            bottomMargin = dp(8)
-        }
+        layoutParams =
+            LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT).apply {
+                bottomMargin = dp(8)
+            }
     }
 
     private fun section(label: String) = TextView(this).apply {

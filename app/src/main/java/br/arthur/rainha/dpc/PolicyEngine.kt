@@ -1,4 +1,4 @@
-package com.example.lockdowndpc
+package br.arthur.rainha.dpc
 
 import android.app.admin.DevicePolicyManager
 import android.content.ComponentName
@@ -52,12 +52,12 @@ object PolicyEngine {
                 // Keep the power menu available for operational recovery; Home, Recents,
                 // notifications, status-bar info and keyguard remain disabled in lock task.
                 DevicePolicyManager.LOCK_TASK_FEATURE_GLOBAL_ACTIONS or
-                    (if (config.disableStatusBar) 0 else DevicePolicyManager.LOCK_TASK_FEATURE_SYSTEM_INFO)
+                        (if (config.disableStatusBar) 0 else DevicePolicyManager.LOCK_TASK_FEATURE_SYSTEM_INFO)
             } else {
                 DevicePolicyManager.LOCK_TASK_FEATURE_HOME or
-                    DevicePolicyManager.LOCK_TASK_FEATURE_OVERVIEW or
-                    DevicePolicyManager.LOCK_TASK_FEATURE_NOTIFICATIONS or
-                    DevicePolicyManager.LOCK_TASK_FEATURE_GLOBAL_ACTIONS
+                        DevicePolicyManager.LOCK_TASK_FEATURE_OVERVIEW or
+                        DevicePolicyManager.LOCK_TASK_FEATURE_NOTIFICATIONS or
+                        DevicePolicyManager.LOCK_TASK_FEATURE_GLOBAL_ACTIONS
             }
             dpm.setLockTaskFeatures(admin, features)
         }

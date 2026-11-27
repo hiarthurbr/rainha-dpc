@@ -1,4 +1,4 @@
-package com.example.lockdowndpc
+package br.arthur.rainha.dpc
 
 import android.app.Activity
 import android.app.admin.DevicePolicyManager
@@ -22,6 +22,7 @@ class ProvisioningActivity : Activity() {
             DevicePolicyManager.ACTION_GET_PROVISIONING_MODE -> returnProvisioningMode()
             DevicePolicyManager.ACTION_ADMIN_POLICY_COMPLIANCE,
             "android.app.action.PROVISION_MANAGED_DEVICE" -> completeProvisioning()
+
             else -> finish()
         }
     }
